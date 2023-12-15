@@ -19,11 +19,11 @@ public class Photo {
 	
 	@Column(length = 32, nullable = false)
 	@NotBlank(message = "Il nome non può essere vuoto")
-	@Length(min = 3, max = 20, message = "Il nome della pizza deve essere compreso tra 3 e 20 caratteri")
+	@Length(min = 3, max = 20, message = "Il nome della foto deve essere compreso tra 3 e 20 caratteri")
 	private String name;
 	
 	@Column(columnDefinition = "TEXT")
-	@Length(min = 5, max = 100, message = "La descrizione della pizza deve essere compresa tra 5 e 100 caratteri")
+	@Length(min = 5, max = 100, message = "La descrizione della foto deve essere compresa tra 5 e 100 caratteri")
 	private String description;
 	
 	@Column(nullable = false)
@@ -75,4 +75,5 @@ public class Photo {
 	@Override
 	public String toString() {
 		return "[" + getId() + "] " + getName();
-	}}
+	}
+}
