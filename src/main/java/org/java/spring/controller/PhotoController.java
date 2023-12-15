@@ -65,4 +65,28 @@ public class PhotoController {
 		
 		return "pizza-form";
 	}
+	@PostMapping("/photos/create")
+	public String storePhoto(Model model, @Valid @ModelAttribute Photo photo, BindingResult bindingResult) {
+
+		return savePhoto(model, photo, bindingResult);
+	}
+	
+	private String savePhoto(Model model, @Valid @ModelAttribute Photo photo, BindingResult bindingResult) {
+
+		System.out.println("Photo:\n" + photo);
+		System.out.println("\n---------------\n");
+		System.out.println("Error:\n" + bindingResult);
+
+		if (bindingResult.hasErrors()) {
+
+			System.out.println(bindingResult);
+
+			model.addAttribute("photo", photo);
+			return "photo-form";
+		}
+
+		photoService.save(photo);
+
+		return "redirect:/";
+	}
 }
