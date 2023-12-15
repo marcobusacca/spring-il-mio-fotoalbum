@@ -62,6 +62,17 @@ public class CategoryController {
 		return saveCategory(model, category, bindingResult);
 	}
 	
+	@PostMapping("/categories/delete/{id}")
+	public String deleteCategory(@PathVariable int id) {
+		
+		Category category = categoryService.findById(id);
+		categoryService.delete(category);
+		
+		System.out.println(category);
+		
+		return "redirect:/";
+	}
+	
 	private String saveCategory(Model model, @Valid @ModelAttribute Category category, BindingResult bindingResult) {
 
 		System.out.println("Category:\n" + category);
