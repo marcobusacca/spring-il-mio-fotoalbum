@@ -38,8 +38,7 @@
 						    <tr th:each="photo : ${photos}">
 				      			<th scope="row" th:text="${photo.id}"></th>
 				      			<td th:text="${photo.name}">Mark</td>
-					      		<td th:if="${photo.visible}">Si</td>
-					      		<td th:if="!${photo.visible}">No</td>
+					      		<td th:text="${photo.visible ? 'Si' : 'No'}"></td>
 						      	<td>
 									<a th:href="@{/photos/{photoId} (photoId=${photo.getId()})}" class="btn btn-info">
 										<i class="fas fa-eye"></i>
