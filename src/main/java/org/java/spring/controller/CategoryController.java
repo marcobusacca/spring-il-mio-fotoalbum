@@ -69,7 +69,7 @@ public class CategoryController {
 		
 		System.out.println(category);
 		
-		return "redirect:/";
+		return "redirect:/categories";
 	}
 	
 	private String saveCategory(Model model, @Valid @ModelAttribute Category category, BindingResult bindingResult) {
@@ -89,6 +89,6 @@ public class CategoryController {
 
 		categoryService.save(category);
 
-		return "redirect:/";
+		return "redirect:/categories";
 	}
 }
