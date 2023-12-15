@@ -4,6 +4,7 @@ import { onMounted, ref } from 'vue';
 import axios from 'axios';
 
 // IMPORT COMPONENTS
+import AppHeader from './components/AppHeader.vue';
 import PhotoIndex from './components/PhotoIndex.vue';
 import PhotoShow from './components/PhotoShow.vue';
 
@@ -33,6 +34,7 @@ onMounted(getPhotos);
 </script>
 
 <template>
+  <app-header />
   <main>
     <div class="container-fluid">
       <div class="row">

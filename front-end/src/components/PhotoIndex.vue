@@ -1,6 +1,6 @@
 <script setup>
 // IMPORT LIBS
-import { defineProps, ref } from 'vue';
+import { defineProps, ref, computed } from 'vue';
 
 // EMITS
 const emits = defineEmits(["openPhoto"]);
@@ -12,9 +12,24 @@ const props = defineProps({
         required: true
     }
 });
+
+// DATA
+const nomeFilter = ref('');
+
+// COMPUTED PROPERTY
+const newPhotos = computed(() => {
+    const searchTerm = nomeFilter.value.toLowerCase().trim();
+    return searchTerm ? props.photos.filter(photo => photo.name.toLowerCase().includes(searchTerm)) : props.photos;
+});
 </script>
 
 <template>
+    <div class="col-12">
+        <form class="index-filter-form py-5" @submit.prevent="newPhotos">
+            <input type="text" placeholder="Filtra le foto per nome" class="form-control d-inline-block"
+                v-model="nomeFilter">
+        </form>
+    </div>
     <div class="col-12 py-3">
         <table class="table table-hover text-center text-white w-100">
             <thead>
@@ -25,7 +40,7 @@ const props = defineProps({
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="photo in photos" :key="photo.id">
+                <tr v-for="photo in newPhotos" :key="photo.id">
                     <th scope="row" v-text="photo.id"></th>
                     <td v-text="photo.name"></td>
                     <td>
