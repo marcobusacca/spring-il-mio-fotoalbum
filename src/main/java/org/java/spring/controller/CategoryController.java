@@ -3,7 +3,6 @@ package org.java.spring.controller;
 import java.util.List;
 
 import org.java.spring.db.pojo.Category;
-import org.java.spring.db.pojo.Photo;
 import org.java.spring.db.serv.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
