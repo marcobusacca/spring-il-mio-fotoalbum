@@ -3,7 +3,9 @@ package org.java.spring.controller;
 import java.util.List;
 
 import org.java.spring.db.pojo.Category;
+import org.java.spring.db.pojo.Photo;
 import org.java.spring.db.serv.CategoryService;
+import org.java.spring.db.serv.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,9 @@ public class CategoryController {
 	
 	@Autowired
     private CategoryService categoryService;
+	
+	@Autowired
+    private PhotoService photoService;
 	
 	@GetMapping("/categories")
 	public String getCategories(Model model) {
@@ -65,6 +70,15 @@ public class CategoryController {
 	public String deleteCategory(@PathVariable int id) {
 		
 		Category category = categoryService.findById(id);
+		
+		// RIMOZIONE RELAZIONI TRA LA CATEGORIA E LE FOTO
+		List<Photo> categoriesPhotos = category.getPhotos();
+		
+		categoriesPhotos.forEach(photo -> {
+			photo.getCategories().remove(category);
+			photoService.save(photo);
+		});
+		
 		categoryService.delete(category);
 		
 		System.out.println(category);
