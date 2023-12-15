@@ -1,5 +1,7 @@
 package org.java.spring.db.pojo;
 
+import java.util.List;
+
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
@@ -8,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -32,6 +35,9 @@ public class Photo {
 	
 	@Column(nullable = false)
 	private boolean visible;
+	
+	@ManyToMany
+	private List<Category> categories;
 	
 	public Photo() { }
 	public Photo (String name, String description, String url, boolean visible) {
@@ -70,6 +76,13 @@ public class Photo {
 	}
 	public void setVisible(boolean visible) {
 		this.visible = visible;
+	}
+	
+	public List<Category> getCategories() {
+		return categories;
+	}
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
 	}
 	
 	@Override
