@@ -89,6 +89,17 @@ public class PhotoController {
 		
 		return savePhoto(model, photo, bindingResult);
 	}
+
+	@PostMapping("/photos/delete/{id}")
+	public String deletePhoto(@PathVariable int id) {
+		
+		Photo photo = photoService.findById(id);
+		photoService.delete(photo);
+		
+		System.out.println(photo);
+		
+		return "redirect:/";
+	}
 	
 	private String savePhoto(Model model, @Valid @ModelAttribute Photo photo, BindingResult bindingResult) {
 
