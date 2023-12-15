@@ -19,9 +19,9 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(length = 32, nullable = false)
+	@Column(length = 50, nullable = false)
 	@NotBlank(message = "Il nome non può essere vuoto")
-	@Length(min = 3, max = 20, message = "Il nome della categoria deve essere compreso tra 3 e 20 caratteri")
+	@Length(min = 3, max = 50, message = "Il nome della categoria deve essere compreso tra 3 e 50 caratteri")
 	private String name;
 	
 	@ManyToMany(mappedBy = "categories")
