@@ -3,9 +3,7 @@ package org.java.spring.controller;
 import java.util.List;
 
 import org.java.spring.db.pojo.Category;
-import org.java.spring.db.pojo.Ingredient;
 import org.java.spring.db.pojo.Photo;
-import org.java.spring.db.pojo.Pizza;
 import org.java.spring.db.serv.CategoryService;
 import org.java.spring.db.serv.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
