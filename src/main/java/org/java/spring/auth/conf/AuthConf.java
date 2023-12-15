@@ -23,6 +23,7 @@ public class AuthConf {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
 		http.authorizeHttpRequests()
+			.requestMatchers("/api/**").permitAll()
 	        .requestMatchers("/**").hasAuthority("ADMIN")
 	        .and().formLogin()
 	        .and().logout()
