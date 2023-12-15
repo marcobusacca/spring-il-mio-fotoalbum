@@ -24,33 +24,31 @@ const newPhotos = computed(() => {
 </script>
 
 <template>
-    <div class="col-12">
-        <form class="index-filter-form py-5" @submit.prevent="newPhotos">
-            <input type="text" placeholder="Filtra le foto per nome" class="form-control d-inline-block"
-                v-model="nomeFilter">
+    <div class="col-12 d-flex justify-content-center">
+        <form class="index-filter-form py-5 w-50" @submit.prevent="newPhotos">
+            <input type="text" placeholder="Filtra le foto per nome"
+                class="form-control d-inline-block border-2 border-black py-2" v-model="nomeFilter">
         </form>
     </div>
     <div class="col-12 py-3">
-        <table class="table table-hover text-center text-white w-100">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Titolo</th>
-                    <th scope="col">Strumenti</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="photo in newPhotos" :key="photo.id">
-                    <th scope="row" v-text="photo.id"></th>
-                    <td v-text="photo.name"></td>
-                    <td>
+        <div class="row justify-content-center">
+            <div class="col-6 p-5" v-for="photo in newPhotos" :key="photo.id">
+                <div class="card">
+                    <div class="card-header">
+                        <img :src="photo.url" class="card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" v-text="photo.name"></h5>
+                        <p class="card-text" v-text="photo.description"></p>
+                    </div>
+                    <div class="card-footer text-center">
                         <button class="btn btn-info" @click="$emit('openPhoto', photo.id)">
                             <i class="fas fa-eye"></i>
                         </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

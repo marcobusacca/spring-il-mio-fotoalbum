@@ -36,7 +36,7 @@ onMounted(getPhotos);
 <template>
   <app-header />
   <main>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <photo-index v-if="photoActive == null" :photos="photos" @open-photo="openPhoto" />
         <photo-show v-else :photo="photoActive" @close-page="closePage" />
