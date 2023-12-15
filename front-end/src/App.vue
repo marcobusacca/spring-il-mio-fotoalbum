@@ -33,16 +33,16 @@ onMounted(getPhotos);
 </script>
 
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
+  <main>
+    <div class="container-fluid">
+      <div class="row">
         <photo-index v-if="photoActive == null" :photos="photos" @open-photo="openPhoto" />
         <photo-show v-else :photo="photoActive" @close-page="closePage" />
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use './styles/generals.scss' as *;
 </style>
