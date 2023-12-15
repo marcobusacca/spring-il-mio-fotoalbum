@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.validation.Valid;
@@ -43,6 +44,21 @@ public class CategoryController {
 	@PostMapping("/categories/create")
 	public String storeCategory(Model model, @Valid @ModelAttribute Category category, BindingResult bindingResult) {
 
+		return saveCategory(model, category, bindingResult);
+	}
+	
+	@GetMapping("categories/edit/{id}")
+	public String editCategory(Model model, @PathVariable int id) {
+		
+		Category category = categoryService.findById(id);
+		
+		model.addAttribute("category", category);
+		
+		return "category-form";
+	}
+	@PostMapping("categories/edit/{id}")
+	public String updateCategory(Model model, @Valid @ModelAttribute Category category, BindingResult bindingResult) {
+		
 		return saveCategory(model, category, bindingResult);
 	}
 	
