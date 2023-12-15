@@ -8,7 +8,12 @@ import org.java.spring.db.serv.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class CategoryController {
@@ -34,5 +39,30 @@ public class CategoryController {
 		model.addAttribute("category", category);
 		
 		return "category-form";
+	}
+	@PostMapping("/categories/create")
+	public String storeCategory(Model model, @Valid @ModelAttribute Category category, BindingResult bindingResult) {
+
+		return saveCategory(model, category, bindingResult);
+	}
+	
+	private String saveCategory(Model model, @Valid @ModelAttribute Category category, BindingResult bindingResult) {
+
+		System.out.println("Category:\n" + category);
+		System.out.println("\n---------------\n");
+		System.out.println("Error:\n" + bindingResult);
+
+		if (bindingResult.hasErrors()) {
+
+			System.out.println(bindingResult);
+			
+			model.addAttribute("category", category);
+			
+			return "category-form";
+		}
+
+		categoryService.save(category);
+
+		return "redirect:/";
 	}
 }
