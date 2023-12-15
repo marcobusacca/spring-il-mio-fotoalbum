@@ -53,4 +53,16 @@ public class PhotoController {
 		
 		return "photo";
 	}
+	
+	@GetMapping("/photos/create")
+	public String createPhoto(Model model) {
+		
+		Photo photo = new Photo();
+		List<Category> categories = categoryService.findAll();
+		
+		model.addAttribute("photo", photo);
+		model.addAttribute("categories", categories);
+		
+		return "pizza-form";
+	}
 }
