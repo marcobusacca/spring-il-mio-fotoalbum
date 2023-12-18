@@ -20,7 +20,7 @@ public class ContactRestController {
     @PostMapping
     public ResponseEntity<String> sendMessage(@RequestBody Contact contact) {
 
-    			contactService.save(contact);
-            return new ResponseEntity<>("Messaggio inviato con successo!", HttpStatus.OK);
+    		contactService.save(contact);
+    		return new ResponseEntity<>("Messaggio inviato con successo!", HttpStatus.OK);
     }
 }
