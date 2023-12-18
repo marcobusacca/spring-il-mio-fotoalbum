@@ -25,6 +25,7 @@ public class AuthConf {
 		http.csrf().disable()
 		.authorizeHttpRequests()
 			.requestMatchers("/api/**").permitAll()
+			.requestMatchers("/contacts/**").hasAuthority("SUPER-ADMIN")
 	        .requestMatchers("/**").hasAnyAuthority("ADMIN", "SUPER-ADMIN")
 	        .and().formLogin()
 	        .and().logout()
