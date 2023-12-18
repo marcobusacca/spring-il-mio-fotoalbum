@@ -33,15 +33,12 @@ const newPhotos = computed(() => {
     <div class="col-12 py-3">
         <div class="row justify-content-center">
             <div class="col-6 p-5" v-for="photo in newPhotos" :key="photo.id">
-                <div class="card">
-                    <div class="card-header">
-                        <img :src="photo.url" class="card-img-top">
-                    </div>
-                    <div class="card-body">
+                <div class="card text-center" style="width: 500px">
+                    <img :src="photo.url" class="card-img-top" style="height: 400px">
+                    <div class="card-body py-5">
                         <h5 class="card-title" v-text="photo.name"></h5>
-                        <p class="card-text" v-text="photo.description"></p>
                     </div>
-                    <div class="card-footer text-center">
+                    <div class="card-footer py-3">
                         <button class="btn btn-info" @click="$emit('openPhoto', photo.id)">
                             <i class="fas fa-eye"></i>
                         </button>
