@@ -41,11 +41,13 @@ public class Photo {
 	@Column(nullable = false)
 	private boolean visible;
 	
+	private boolean checked;
+	
 	@ManyToMany
     @Column(nullable = false)
     @Size(min = 1, message = "Devi selezionare almeno una categoria")
 	private List<Category> categories;
-	
+
 	@ManyToOne
     private User user;
 	
@@ -88,6 +90,12 @@ public class Photo {
 	}
 	public void setVisible(boolean visible) {
 		this.visible = visible;
+	}
+	public boolean isChecked() {
+		return checked;
+	}
+	public void setChecked(boolean checked) {
+		this.checked = checked;
 	}
 	
 	public User getUser() {
