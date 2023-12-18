@@ -41,6 +41,13 @@ onMounted(getPhotos);
 <template>
     <div class="col-12" v-if="photoActive == null">
         <div class="row">
+            <div class="col-12 text-center py-5">
+                <router-link :to="{ name: 'contact' }">
+                    <button class="btn btn-primary">
+                        <span>Contattaci</span>
+                    </button>
+                </router-link>
+            </div>
             <div class="col-12 d-flex justify-content-center">
                 <form class="index-filter-form py-5 w-50" @submit.prevent="">
                     <input type="text" placeholder="Filtra le foto per nome"

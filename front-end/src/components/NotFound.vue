@@ -3,7 +3,7 @@
 
 <template>
     <div class="col-12 text-center py-5">
-        <h1 class="my-5">Page Not Found</h1>
+        <h1 class="my-5">Pagina non trovata</h1>
         <router-link :to="{ name: 'index' }">
             <button class="btn btn-info">
                 <i class="fa-solid fa-house-user fa-lg"></i>
